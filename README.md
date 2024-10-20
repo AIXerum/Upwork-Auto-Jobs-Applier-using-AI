@@ -1,7 +1,7 @@
 <!--
   Title: UpworkScribe AI: Automated Jobs Application on Upwork
   Description: UpworkScribe AI is an innovative, AI tool designed to automate and optimize the job application process on Upwork, enabling freelancers to efficiently apply to multiple relevant projects with personalized cover letters.
-  Author: Aymen Mir
+  Author: AIXerum
   Keywords: Langgraph, litellm, LLAMA3, Upwork automation, automated job applications, AI cover letter generator, job scraping, freelance tools
 -->
 
@@ -107,8 +107,8 @@ While the current app provides correct results, it requires further tuning to be
 1. **Clone the repository:**
 
    ```sh
-   git clone https://github.com/kaymen99/upwork-auto-jobs-applier-using-AI.git
-   cd upwork-auto-jobs-applier-using-AI
+   git clone https://github.com/AIXerum/Upwork-Auto-Jobs-Applier-using-AI.git
+   cd Upwork-Auto-Jobs-Applier-using-AI
    ```
 
 2. **Create and activate a virtual environment:**
@@ -156,11 +156,3 @@ While the current app provides correct results, it requires further tuning to be
 * To use this automation for you own profile, just add your profile into `files/profile.md` and remove the example profile.
 
 * You can customize the behavior of each agent by modifying the corresponding agent prompt in the `prompts` script.
-
-### Contributing
-
-Contributions are welcome! Please open an issue or submit a pull request for any changes.
-
-### Contact
-
-If you have any questions or suggestions, feel free to contact me at `aymenMir10001@gmail.com`.
