@@ -61,12 +61,12 @@ I’m really excited about your project—using AI to analyze and predict trends
 Let’s chat more about how I can help you build your project!
 
 **Best,**  
-**Aymen** 😊
+**Andrew** 😊
 </letter>
 
 # IMPORTANT
 
-* My name is: Aymen, use it at the end of letters.
+* My name is: Andrew, use it at the end of letters.
 * Ensure cover letter is well-formatted and include relevant keywords and emojis.
 * You must return your output as a JSON format with a single key "letter".
 * Only return the JSON object with no preamble or explanation statement, and no ```json sign.
