@@ -71,6 +71,13 @@ class UpworkAutomationGraph:
         print(Fore.YELLOW + "----- Classifying scraped jobs -----\n" + Style.RESET_ALL)
         scraped_jobs = state["scraped_jobs_list"]
         classify_result = self.classify_jobs_agent.invoke(scraped_jobs)
+
+        # Clean up the response - remove markdown code blocks if present
+        import re
+        classify_result = re.sub(r'```json\s*', '', classify_result)
+        classify_result = re.sub(r'```\s*$', '', classify_result)
+        classify_result = classify_result.strip()
+
         matches = json.loads(classify_result, strict=False)["matches"]
         return {**state, "matches": matches}
 
@@ -114,6 +121,13 @@ class UpworkAutomationGraph:
         matches = state["matches"]
         job_description = str(matches[-1])
         cover_letter_result = self.generate_cover_letter_agent.invoke(job_description)
+
+        # Clean up the response - remove markdown code blocks if present
+        import re
+        cover_letter_result = re.sub(r'```json\s*', '', cover_letter_result)
+        cover_letter_result = re.sub(r'```\s*$', '', cover_letter_result)
+        cover_letter_result = cover_letter_result.strip()
+
         cover_letter = json.loads(cover_letter_result, strict=False)["letter"]
         return {
             **state,
@@ -144,14 +158,14 @@ class UpworkAutomationGraph:
         # llama3 with Groq will hit the TPM limit and throw an error
         self.classify_jobs_agent = Agent(
             name="Job Classifier Agent",
-            model="gemini/gemini-1.5-pro",
+            model="gemini/gemini-2.5-flash-preview-05-20",
             system_prompt=classify_jobs_prompt.format(profile=self.profile),
             temperature=0.1,
         )
         self.generate_cover_letter_agent = Agent(
             name="Writer Agent",
             # model="groq/llama-3.1-70b-versatile",
-            model="gemini/gemini-1.5-pro",
+            model="gemini/gemini-2.5-flash-preview-05-20",
             system_prompt=generate_cover_letter_prompt.format(profile=self.profile),
             temperature=0.1
         )

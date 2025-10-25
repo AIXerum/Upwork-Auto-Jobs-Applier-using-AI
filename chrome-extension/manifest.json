@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Upwork Cover Letter Generator",
+  "version": "2.0.0",
+  "description": "Extract Upwork jobs and generate AI-powered cover letters instantly",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "notifications"
+  ],
+  "host_permissions": [
+    "*://www.upwork.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://www.upwork.com/jobs/*",
+        "*://www.upwork.com/nx/search/jobs*",
+        "*://www.upwork.com/nx/proposals/job/*"
+      ],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}

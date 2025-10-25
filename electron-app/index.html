@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upwork Cover Letter Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <h1>🤖 Upwork Cover Letter Generator</h1>
+      <p>AI-powered desktop app with anti-detection browser automation</p>
+    </header>
+
+    <!-- Status Panel -->
+    <div class="status-panel">
+      <div class="status-item">
+        <span class="label">Python Server:</span>
+        <span class="value" id="server-status">
+          <span class="indicator" id="server-indicator"></span>
+          <span id="server-text">Checking...</span>
+        </span>
+      </div>
+      <div class="status-item">
+        <span class="label">Browser:</span>
+        <span class="value" id="browser-status">
+          <span class="indicator" id="browser-indicator"></span>
+          <span id="browser-text">Not launched</span>
+        </span>
+      </div>
+      <div class="status-item">
+        <span class="label">Jobs Processed:</span>
+        <span class="value" id="jobs-count">0</span>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Left Panel: Controls -->
+      <div class="left-panel">
+        <div class="card">
+          <h2>🚀 Launch Browser</h2>
+          <p>Opens Chrome with stealth mode to browse Upwork</p>
+
+          <div class="form-group">
+            <label>Search Query:</label>
+            <input type="text" id="search-query" value="AI Agent Developer" placeholder="e.g., Full Stack Developer">
+          </div>
+
+          <button class="btn btn-primary" id="launch-btn">
+            Launch Browser
+          </button>
+          <button class="btn btn-danger" id="close-browser-btn" disabled>
+            Close Browser
+          </button>
+        </div>
+
+        <div class="card">
+          <h2>📝 Generate Cover Letter</h2>
+          <p>Extract job and generate AI cover letter</p>
+
+          <button class="btn btn-success" id="extract-btn" disabled>
+            Extract & Generate
+          </button>
+
+          <div class="info-box">
+            <strong>📖 How to use:</strong>
+            <ol>
+              <li>Click "Launch Browser"</li>
+              <li>Login to Upwork in the browser that opens</li>
+              <li>Navigate to any job page</li>
+              <li>Click "Extract & Generate"</li>
+              <li>Wait for AI to generate cover letter</li>
+              <li>Copy and paste into Upwork!</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Panel: Results -->
+      <div class="right-panel">
+        <div class="card">
+          <h2>📋 Latest Cover Letter</h2>
+
+          <div id="loading" class="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Generating cover letter...</p>
+          </div>
+
+          <div id="job-info" style="display: none;">
+            <div class="job-title" id="job-title"></div>
+            <div class="job-meta" id="job-meta"></div>
+          </div>
+
+          <textarea id="cover-letter" placeholder="Your AI-generated cover letter will appear here..." readonly></textarea>
+
+          <button class="btn btn-secondary" id="copy-btn" disabled>
+            📋 Copy to Clipboard
+          </button>
+        </div>
+
+        <div class="card">
+          <h2>📊 Activity Log</h2>
+          <div id="activity-log" class="activity-log"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

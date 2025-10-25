@@ -1,0 +1,53 @@
+{
+  "name": "upwork-cover-letter-generator",
+  "version": "1.0.0",
+  "description": "Desktop app for generating Upwork cover letters with AI",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build-mac": "electron-builder --mac",
+    "build-win": "electron-builder --win",
+    "build-linux": "electron-builder --linux"
+  },
+  "keywords": [
+    "upwork",
+    "ai",
+    "cover-letter",
+    "automation"
+  ],
+  "author": "Christopher Carter",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1"
+  },
+  "dependencies": {
+    "puppeteer": "^21.7.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "axios": "^1.6.0"
+  },
+  "build": {
+    "appId": "com.upwork.coverletter",
+    "productName": "Upwork Cover Letter Generator",
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    }
+  }
+}

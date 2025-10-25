@@ -1,0 +1,116 @@
+/**
+ * Content script styles
+ * Injected into Upwork pages
+ */
+
+/* Floating extract button */
+.upwork-ai-extract-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 99999;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.upwork-ai-extract-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5);
+}
+
+.upwork-ai-extract-btn:active {
+  transform: translateY(0);
+}
+
+.upwork-ai-extract-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.upwork-ai-extract-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Spinner animation */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Notification */
+.upwork-ai-notification {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  z-index: 100000;
+  min-width: 300px;
+  max-width: 500px;
+  padding: 16px 20px;
+  background: #fff;
+  color: #333;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  animation: slideIn 0.3s ease;
+}
+
+.upwork-ai-notification.success {
+  border-left: 4px solid #4ade80;
+}
+
+.upwork-ai-notification.error {
+  border-left: 4px solid #ef4444;
+}
+
+.upwork-ai-notification.warning {
+  border-left: 4px solid #f59e0b;
+}
+
+.upwork-ai-notification.fade-out {
+  animation: slideOut 0.3s ease;
+  opacity: 0;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+}
