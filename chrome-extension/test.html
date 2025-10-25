@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Extension Configuration Test</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #667eea;
+      color: #fff;
+      padding: 40px;
+      text-align: center;
+    }
+    .info { background: rgba(255,255,255,0.2); padding: 20px; border-radius: 12px; margin: 20px 0; }
+    code { background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>🔍 Extension Configuration Test</h1>
+  <div class="info">
+    <h2>Current API URL:</h2>
+    <code id="api-url">Loading...</code>
+  </div>
+  <div class="info">
+    <h2>Extension Version:</h2>
+    <code id="version">Loading...</code>
+  </div>
+
+  <script>
+    // This will be injected by content.js if it's working
+    setTimeout(() => {
+      const apiUrl = typeof API_URL !== 'undefined' ? API_URL : 'NOT DEFINED';
+      document.getElementById('api-url').textContent = apiUrl;
+
+      if (apiUrl.includes('46.202.93.22')) {
+        document.getElementById('api-url').style.background = '#4ade80';
+        alert('✅ Extension using PRODUCTION URL - Good!');
+      } else if (apiUrl.includes('localhost')) {
+        document.getElementById('api-url').style.background = '#ef4444';
+        alert('❌ Extension using OLD localhost URL - Remove and re-add extension!');
+      }
+    }, 1000);
+  </script>
+</body>
+</html>

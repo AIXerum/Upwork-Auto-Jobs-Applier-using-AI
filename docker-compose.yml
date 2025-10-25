@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  upwork-cover-letter-api:
+    build: .
+    container_name: upwork-cover-letter-api
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_APP=extension_server.py
+      - PYTHONUNBUFFERED=1
+      # Add your API keys here or use .env file
+      - TAVILY_API_KEY=${TAVILY_API_KEY}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - GROQ_API_KEY=${GROQ_API_KEY}
+    volumes:
+      # Mount files directory to persist generated cover letters
+      - ./files:/app/files
+      # Mount logs directory if you add logging
+      - ./logs:/app/logs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - upwork-network
+
+networks:
+  upwork-network:
+    driver: bridge
